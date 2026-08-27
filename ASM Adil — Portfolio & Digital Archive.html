@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASM Adil — Medical Researcher, President's Scout & Filmmaker</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Cabinet Grotesk', 'Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+            serif: ['Playfair Display', 'Georgia', 'serif']
+          },
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              900: '#064e3b',
+            },
+            accent: {
+              amber: '#f59e0b',
+              cyan: '#06b6d4',
+              purple: '#8b5cf6',
+              rose: '#f43f5e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Glassmorphism styling */
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.55);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(52, 211, 153, 0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.5), 0 0 20px -2px rgba(16, 185, 129, 0.15);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-gradient-emerald {
+      background: linear-gradient(135deg, #6ee7b7 0%, #10b981 50%, #047857 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* Before/After Split View */
+    .compare-container {
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+    .compare-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="bg-[#070b12] text-slate-200 antialiased selection:bg-emerald-500 selection:text-slate-950 min-h-screen">
+
+  <!-- Ambient Glow Backgrounds -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -right-20 w-[30rem] h-[30rem] bg-cyan-500/8 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-20 left-1/3 w-[36rem] h-[36rem] bg-indigo-500/8 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- STICKY NAVIGATION -->
+  <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-[1.5px] shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+            <span class="font-mono text-sm font-bold text-emerald-400">AA</span>
+          </div>
+        </div>
+        <div>
+          <span class="font-bold text-slate-100 tracking-tight text-sm sm:text-base">ASM Adil</span>
+          <span class="hidden sm:inline-block text-xs font-mono text-emerald-400/90 ml-2 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">PS '20 • Med Research</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1 text-xs font-medium text-slate-300">
+        <a href="#about" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800/60 transition">About</a>
+        <a href="#cinema" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800/60 transition">Cinema & Video</a>
+        <a href="#photography" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800/60 transition">Photography</a>
+        <a href="#medical" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800/60 transition">Clinical Research</a>
+        <a href="#scout" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800/60 transition">Scout Dossier</a>
+        <a href="#heritage" class="px-3 py-1.5 rounded-lg hover:text-white hover:bg-slate-800/60 transition">Heritage & Lab</a>
+      </nav>
+
+      <!-- Action & Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition shadow-lg shadow-emerald-500/25">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Inquire</span>
+        </a>
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg bg-slate-800/80 text-slate-300 hover:text-white">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800/80 bg-slate-950/95 px-4 py-4 space-y-2">
+      <a href="#about" class="mobile-link block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800/80">About Overview</a>
+      <a href="#cinema" class="mobile-link block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800/80">Cinema & Color Grading</a>
+      <a href="#photography" class="mobile-link block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800/80">Photography Gallery</a>
+      <a href="#medical" class="mobile-link block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800/80">Clinical Case & Research</a>
+      <a href="#scout" class="mobile-link block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800/80">President's Scout Dossier</a>
+      <a href="#heritage" class="mobile-link block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-800/80">Father's Heritage & Flavor Lab</a>
+      <a href="#contact" class="mobile-link block px-3 py-2 rounded-lg text-sm text-emerald-400 font-semibold bg-emerald-500/10">Get In Touch</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-24">
+
+    <!-- HERO SECTION: PROFILE & SHORT BIO -->
+    <section id="about" class="pt-4 sm:pt-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- Left Column: Biography & Mission -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/60 text-slate-300 text-xs font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>Chittagong, Bangladesh • Medical Aspirant & Creative Director</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Synthesizing <span class="text-gradient-emerald">Clinical Precision</span> &amp; <span class="text-gradient">Cinematic Storytelling</span>.
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
+            I am <strong class="text-white font-semibold">ASM Adil</strong> (19), a medical aspirant, video editor, colorist, and 
+            <strong class="text-emerald-400 font-semibold">2020 President’s Scout</strong>. Driven by surgical curiosity after researching, diagnosing, and recovering from congenital right PUJ obstruction via laparoscopic pyeloplasty, I merge scientific rigor, pioneering scouting leadership, and high-end cinema workflows.
+          </p>
+
+          <!-- Highlights Pills -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800/80">
+              <div class="flex items-center gap-2 text-emerald-400 mb-1">
+                <i data-lucide="award" class="w-4 h-4"></i>
+                <span class="text-xs font-mono font-bold uppercase tracking-wider">Scouting</span>
+              </div>
+              <div class="text-sm font-semibold text-slate-100">President's Scout '20</div>
+              <div class="text-[11px] text-slate-400">Former SPL • 12+ Mentored</div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800/80">
+              <div class="flex items-center gap-2 text-cyan-400 mb-1">
+                <i data-lucide="activity" class="w-4 h-4"></i>
+                <span class="text-xs font-mono font-bold uppercase tracking-wider">Medicine</span>
+              </div>
+              <div class="text-sm font-semibold text-slate-100">PUJ Case Research</div>
+              <div class="text-[11px] text-slate-400">Pyeloplasty Mechanics</div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800/80 col-span-2 sm:col-span-1">
+              <div class="flex items-center gap-2 text-accent-purple mb-1">
+                <i data-lucide="video" class="w-4 h-4"></i>
+                <span class="text-xs font-mono font-bold uppercase tracking-wider">Visual Arts</span>
+              </div>
+              <div class="text-sm font-semibold text-slate-100">DaVinci &amp; Premiere</div>
+              <div class="text-[11px] text-slate-400">Color Grading &amp; VFX</div>
+            </div>
+          </div>
+
+          <!-- Quick Navigation Actions -->
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="#medical" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 text-sm font-medium border border-slate-700 transition">
+              <i data-lucide="file-text" class="w-4 h-4 text-emerald-400"></i>
+              Read Clinical Notebook
+            </a>
+            <a href="#scout" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 text-sm font-medium border border-slate-700 transition">
+              <i data-lucide="compass" class="w-4 h-4 text-amber-400"></i>
+              Scout Leadership Track
+            </a>
+            <a href="#cinema" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-slate-400 hover:text-white text-sm transition">
+              <span>View Showreel &amp; Edits</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: ASM Adil's Photo (19376.jpg) with Custom Loader -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            
+            <!-- Glow Backing -->
+            <div class="absolute -inset-1.5 bg-gradient-to-tr from-emerald-500/30 via-cyan-500/20 to-amber-500/20 rounded-3xl blur-lg opacity-75"></div>
+            
+            <!-- Main Photo Container -->
+            <div id="photoDropArea" class="relative rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-900 shadow-2xl group">
+              
+              <!-- User Photo element (Exact file 19376.jpg) -->
+              <img 
+                id="heroAvatarImg"
+                src="19376.jpg" 
+                alt="ASM Adil - Coastal Sunset Expedition" 
+                class="w-full h-[460px] object-cover object-top sm:object-center transform group-hover:scale-105 transition duration-700 ease-out user-personal-photo"
+              />
+              
+              <!-- Gradient Overlay for caption legibility -->
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent pointer-events-none"></div>
+
+              <!-- Top-right Quick Reload / File Picker Button -->
+              <div class="absolute top-3 right-3 z-20">
+                <input type="file" id="photoFileInput" accept="image/*" class="hidden" onchange="handleManualPhotoUpload(event)" />
+                <button 
+                  type="button"
+                  onclick="document.getElementById('photoFileInput').click()"
+                  title="Reload or select 19376.jpg from device"
+                  class="px-3 py-1.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-xs font-mono text-emerald-400 flex items-center gap-1.5 shadow-lg transition"
+                >
+                  <i data-lucide="image" class="w-3.5 h-3.5"></i>
+                  <span>19376.jpg</span>
+                </button>
+              </div>
+
+              <!-- Overlay Card Metadata -->
+              <div class="absolute bottom-0 inset-x-0 p-5 space-y-2 pointer-events-none">
+                <div class="flex items-center justify-between text-xs font-mono text-emerald-400">
+                  <span class="flex items-center gap-1.5">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                    Sundarbans / Coastal Mangrove Walkway
+                  </span>
+                  <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-700 text-slate-300">Golden Hour</span>
+                </div>
+                <div class="text-sm font-medium text-slate-100 leading-snug">
+                  "Observation in the field cultivates diagnostic precision in the lab."
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Badge: President Scout -->
+            <div class="absolute -top-4 -left-3 px-3.5 py-2 rounded-xl bg-slate-900/95 border border-emerald-500/40 shadow-xl flex items-center gap-2.5 z-20">
+              <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <div class="text-[10px] font-mono uppercase text-slate-400 leading-none">Honor Roll</div>
+                <div class="text-xs font-bold text-slate-100">President's Scout '20</div>
+              </div>
+            </div>
+
+            <!-- Floating Badge: Academic Focus -->
+            <div class="absolute -bottom-4 -right-3 px-3.5 py-2 rounded-xl bg-slate-900/95 border border-cyan-500/40 shadow-xl flex items-center gap-2.5 z-20">
+              <div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+                <i data-lucide="stethoscope" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <div class="text-[10px] font-mono uppercase text-slate-400 leading-none">Focus</div>
+                <div class="text-xs font-bold text-slate-100">Surgical &amp; Clinical Medicine</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LIVE SEARCH & CATEGORY FILTER BAR -->
+    <section class="sticky top-20 z-30 pt-2 pb-2">
+      <div class="glass-panel rounded-2xl p-3 sm:p-4 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+        
+        <!-- Filter Pills -->
+        <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none" id="filterPills">
+          <button onclick="filterContent('all')" class="filter-btn active px-3.5 py-1.5 rounded-lg text-xs font-medium bg-emerald-500 text-slate-950 transition">All Disciplines</button>
+          <button onclick="filterContent('cinema')" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Cinema & Video</button>
+          <button onclick="filterContent('photo')" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Photography</button>
+          <button onclick="filterContent('med')" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Medical & Surgery</button>
+          <button onclick="filterContent('scout')" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Scouting</button>
+          <button onclick="filterContent('heritage')" class="filter-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-300 hover:bg-slate-700 transition">Heritage & Culinary</button>
+        </div>
+
+        <!-- Live Search Input -->
+        <div class="relative w-full md:w-72">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input 
+            type="text" 
+            id="liveSearchInput" 
+            placeholder="Search cases, LUTs, knots, notes..." 
+            oninput="handleSearch()"
+            class="w-full pl-9 pr-4 py-1.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- PILLAR 1: CINEMA & VIDEO EDITING -->
+    <section id="cinema" class="pillar-section space-y-8" data-category="cinema">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <div class="text-xs font-mono font-bold text-accent-purple uppercase tracking-widest flex items-center gap-2">
+            <i data-lucide="film" class="w-4 h-4"></i> Pillar 01
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Cinema &amp; Post-Production Lab</h2>
+          <p class="text-slate-400 text-sm mt-1 max-w-xl">
+            Non-linear timeline editing, multi-cam assembly, custom Rec.709 conversion matrices, and procedural VFX workflows.
+          </p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-xs text-slate-400">
+          <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">Premiere Pro</span>
+          <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">DaVinci Resolve Studio</span>
+          <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">After Effects</span>
+        </div>
+      </div>
+
+      <!-- Interactive Color Grade Breakdown Tool -->
+      <div class="glass-card rounded-2xl p-6 border border-slate-800">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <div>
+            <h3 class="text-base font-semibold text-slate-100 flex items-center gap-2">
+              <i data-lucide="sliders" class="w-4 h-4 text-emerald-400"></i>
+              Interactive Color Grade Breakdown (S-Log3 to Cinematic Rec.709 Film Print)
+            </h3>
+            <p class="text-xs text-slate-400">Slide horizontal control or click toggle to inspect gamut remap, shadow contrast, and skin tone CST.</p>
+          </div>
+          <button onclick="toggleGradeSlider()" class="self-start sm:self-auto px-3 py-1 text-xs font-mono rounded bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700">
+            Auto-Wipe Compare
+          </button>
+        </div>
+
+        <!-- Grade Comparator Window -->
+        <div class="compare-container relative w-full h-64 sm:h-80 rounded-xl overflow-hidden border border-slate-700 shadow-inner group">
+          <!-- Graded Image (Underneath) -->
+          <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'); filter: contrast(1.18) saturate(1.25) sepia(0.06);">
+            <span class="absolute bottom-3 right-3 text-[11px] font-mono font-bold bg-emerald-500/90 text-slate-950 px-2.5 py-0.5 rounded shadow">
+              GRADED (ACEScc / Film Look)
+            </span>
+          </div>
+
+          <!-- Flat / Log Image (Top Overlay) -->
+          <div id="gradeOverlay" class="compare-overlay border-r-2 border-emerald-400 shadow-[0_0_10px_#10b981]" style="width: 50%;">
+            <div class="w-[1000px] h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'); filter: contrast(0.7) brightness(1.15) saturate(0.55);">
+            </div>
+            <span class="absolute bottom-3 left-3 text-[11px] font-mono font-bold bg-slate-900/90 text-slate-300 border border-slate-700 px-2.5 py-0.5 rounded">
+              RAW LOG (Uncorrected)
+            </span>
+          </div>
+
+          <!-- Range Controller Slider -->
+          <input 
+            type="range" 
+            min="0" 
+            max="100" 
+            value="50" 
+            id="gradeRange" 
+            oninput="updateGradeSlider(this.value)" 
+            class="absolute inset-x-0 bottom-0 w-full h-full opacity-0 cursor-ew-resize z-20"
+          />
+        </div>
+
+        <!-- Technical Color Pipeline Meta -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 pt-3 border-t border-slate-800 text-xs font-mono text-slate-400">
+          <div><span class="text-slate-500">Color Science:</span> DaVinci YRGB Color Managed</div>
+          <div><span class="text-slate-500">Input CST:</span> Sony S-Gamut3.Cine / S-Log3</div>
+          <div><span class="text-slate-500">Target Gamut:</span> Rec.709 / Gamma 2.4</div>
+          <div><span class="text-slate-500">Print Emulation:</span> Kodak 2383 D65</div>
+        </div>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Project 1 -->
+        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between search-target" data-keywords="cinema video documentary sundarbans davinci premiere">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-accent-purple font-semibold">Cinematic Documentary</span>
+              <span class="text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 04:18</span>
+            </div>
+            <h4 class="text-base font-bold text-white group-hover:text-emerald-400 transition">Estuary Tides &amp; Mangrove Solitude</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Ambient visual poem capturing the Sundarbans littoral boundary. Pacing anchored to natural soundscapes, 4K 60fps slow-motion tracking, and custom low-frequency acoustic mixing.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">Premiere Pro</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">FilmConvert Nitrate</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">Sound Design</span>
+            </div>
+          </div>
+          <button onclick="openModal('cinema', 'estuary')" class="mt-4 w-full py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-xs font-medium text-emerald-400 flex items-center justify-center gap-1.5 transition">
+            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Read Breakdown &amp; Timeline
+          </button>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between search-target" data-keywords="scout national rally motion graphics after effects pacing">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-emerald-400 font-semibold">Rally Promotional</span>
+              <span class="text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 02:45</span>
+            </div>
+            <h4 class="text-base font-bold text-white">National Scout Jamboree Trailer</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Fast-paced kinetic typography and beat-synced cuts celebrating troop fieldcraft engineering, compass drills, and campfire ethos.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">After Effects</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">Kinetic Typography</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">Speed Ramps</span>
+            </div>
+          </div>
+          <button onclick="openModal('cinema', 'scout_rally')" class="mt-4 w-full py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-xs font-medium text-emerald-400 flex items-center justify-center gap-1.5 transition">
+            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Read Breakdown &amp; Timeline
+          </button>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="glass-card rounded-2xl overflow-hidden p-5 flex flex-col justify-between search-target" data-keywords="surgical medical 3d motion laparoscopic anatomy animated">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-cyan-400 font-semibold">Medical Visualization</span>
+              <span class="text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 03:10</span>
+            </div>
+            <h4 class="text-base font-bold text-white">Pyeloplasty Anastomosis Motion Map</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              3D schematic motion graphics explaining dismembered Anderson-Hynes repair of the renal pelvis, spatulation vector lines, and double-J stent alignment.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">Blender + AE</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">DaVinci Fusion</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">Medical CAD</span>
+            </div>
+          </div>
+          <button onclick="openModal('cinema', 'medical_motion')" class="mt-4 w-full py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-xs font-medium text-emerald-400 flex items-center justify-center gap-1.5 transition">
+            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Read Breakdown &amp; Timeline
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILLAR 2: PHOTOGRAPHY GALLERY WITH LENS EXIF METADATA -->
+    <section id="photography" class="pillar-section space-y-8" data-category="photo">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <div class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest flex items-center gap-2">
+            <i data-lucide="camera" class="w-4 h-4"></i> Pillar 02
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Optics &amp; Field Photography Gallery</h2>
+          <p class="text-slate-400 text-sm mt-1 max-w-xl">
+            Curated scenic captures, feline portraits, and macro-botanical textures with simulated sensor metadata.
+          </p>
+        </div>
+        <div class="text-xs font-mono text-slate-400">
+          Click any frame to inspect high-res crop &amp; exposure breakdown.
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- Photo 1: Adil at Coastal Horizon (19376.jpg) -->
+        <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer search-target" data-keywords="photo coastal waters sunset landscape horizon sea adil" onclick="openPhotoModal('Coastal Sundarbans Twilight', 'Mangrove forest boundary during golden sunset tide featuring ASM Adil', '19376.jpg', '24mm', 'f/1.8', '1/800s', 'ISO 50')">
+          <div class="relative h-56 overflow-hidden bg-slate-900">
+            <img 
+              src="19376.jpg" 
+              alt="Coastal Sunset" 
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-500 user-personal-photo" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Inspect Sensor Meta</span>
+            </div>
+          </div>
+          <div class="p-4 space-y-2">
+            <div class="text-xs font-semibold text-slate-200">Sundarbans Estuary Walkway</div>
+            <div class="grid grid-cols-4 gap-1 text-[10px] font-mono text-slate-400 bg-slate-900/80 p-2 rounded-lg border border-slate-800 text-center">
+              <div><span class="block text-slate-600">FL</span>24mm</div>
+              <div><span class="block text-slate-600">AP</span>f/1.8</div>
+              <div><span class="block text-slate-600">SS</span>1/800s</div>
+              <div><span class="block text-slate-600">ISO</span>50</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 2: Feline Portraiture -->
+        <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer search-target" data-keywords="photo feline cat portrait whiskers macro eyes" onclick="openPhotoModal('Feline Gaze in Low Light', 'Domestic feline subject capturing ambient eye iris reflections.', 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80', '50mm Prime', 'f/1.4', '1/250s', 'ISO 400')">
+          <div class="relative h-56 overflow-hidden bg-slate-900">
+            <img 
+              src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80" 
+              alt="Feline Portrait" 
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-500" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Inspect Sensor Meta</span>
+            </div>
+          </div>
+          <div class="p-4 space-y-2">
+            <div class="text-xs font-semibold text-slate-200">Feline Portraiture: Iris Depth</div>
+            <div class="grid grid-cols-4 gap-1 text-[10px] font-mono text-slate-400 bg-slate-900/80 p-2 rounded-lg border border-slate-800 text-center">
+              <div><span class="block text-slate-600">FL</span>50mm</div>
+              <div><span class="block text-slate-600">AP</span>f/1.4</div>
+              <div><span class="block text-slate-600">SS</span>1/250s</div>
+              <div><span class="block text-slate-600">ISO</span>400</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 3: Botanical Macro -->
+        <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer search-target" data-keywords="photo macro botanical leaf dew vein chloroplast nature" onclick="openPhotoModal('Botanical Venation & Morning Dew', 'Transilluminated leaf structure displaying micro-venation network.', 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80', '90mm Macro', 'f/2.8', '1/500s', 'ISO 100')">
+          <div class="relative h-56 overflow-hidden bg-slate-900">
+            <img 
+              src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=800&q=80" 
+              alt="Botanical Macro" 
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-500" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Inspect Sensor Meta</span>
+            </div>
+          </div>
+          <div class="p-4 space-y-2">
+            <div class="text-xs font-semibold text-slate-200">Botanical Micro-Venation</div>
+            <div class="grid grid-cols-4 gap-1 text-[10px] font-mono text-slate-400 bg-slate-900/80 p-2 rounded-lg border border-slate-800 text-center">
+              <div><span class="block text-slate-600">FL</span>90mm</div>
+              <div><span class="block text-slate-600">AP</span>f/2.8</div>
+              <div><span class="block text-slate-600">SS</span>1/500s</div>
+              <div><span class="block text-slate-600">ISO</span>100</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 4: Golden Hour River Mist -->
+        <div class="glass-card rounded-2xl overflow-hidden group cursor-pointer search-target" data-keywords="photo golden hour river boat mist reflection water" onclick="openPhotoModal('Karnaphuli River Mist', 'Early morning mist along the riverbank in Chittagong.', 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80', '35mm Cine', 'f/2.0', '1/1250s', 'ISO 100')">
+          <div class="relative h-56 overflow-hidden bg-slate-900">
+            <img 
+              src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" 
+              alt="River Mist" 
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-500" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> Inspect Sensor Meta</span>
+            </div>
+          </div>
+          <div class="p-4 space-y-2">
+            <div class="text-xs font-semibold text-slate-200">River Mist at Golden Dawn</div>
+            <div class="grid grid-cols-4 gap-1 text-[10px] font-mono text-slate-400 bg-slate-900/80 p-2 rounded-lg border border-slate-800 text-center">
+              <div><span class="block text-slate-600">FL</span>35mm</div>
+              <div><span class="block text-slate-600">AP</span>f/2.0</div>
+              <div><span class="block text-slate-600">SS</span>1/1250s</div>
+              <div><span class="block text-slate-600">ISO</span>100</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PILLAR 3: MEDICAL & CLINICAL SCIENCE RESEARCH -->
+    <section id="medical" class="pillar-section space-y-8" data-category="med">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <div class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest flex items-center gap-2">
+            <i data-lucide="microscope" class="w-4 h-4"></i> Pillar 03
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Clinical Case Notebook &amp; Medical Cognition</h2>
+          <p class="text-slate-400 text-sm mt-1 max-w-xl">
+            In-depth pathological documentation on Pelviureteric Junction (PUJ) obstruction, Anderson-Hynes dismembered laparoscopic pyeloplasty, and spaced-repetition cognitive systems.
+          </p>
+        </div>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i> Active Recall Flashcard Engine
+        </div>
+      </div>
+
+      <!-- Featured Clinical Case Module: PUJ & Pyeloplasty -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left 7 cols: Detailed Case Presentation -->
+        <div class="lg:col-span-7 glass-card rounded-2xl p-6 space-y-5 search-target" data-keywords="medical kidney puj obstruction laparoscopic pyeloplasty anderson hynes surgery urology">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+              Personal Case Study &amp; Literature Review
+            </span>
+            <span class="text-xs font-mono text-slate-400">Surgery: Q4 2023</span>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold text-white">Congenital Right PUJ Obstruction &amp; Laparoscopic Anderson-Hynes Pyeloplasty</h3>
+            <p class="text-xs text-slate-400 mt-1 font-mono">
+              Pathophysiology: Pelviureteric intrinsic aperistaltic segment vs. Lower pole crossing vessel
+            </p>
+          </div>
+
+          <!-- Clinical Anatomy Callout Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+              <div class="text-[11px] font-mono text-slate-400 uppercase">Initial Diagnostic</div>
+              <div class="text-xs font-bold text-slate-200 mt-0.5">Hydronephrosis &amp; Renal Caliectasis</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+              <div class="text-[11px] font-mono text-slate-400 uppercase">Differential</div>
+              <div class="text-xs font-bold text-slate-200 mt-0.5">Exclusion of Malignancy / Nodes</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+              <div class="text-[11px] font-mono text-slate-400 uppercase">Intervention</div>
+              <div class="text-xs font-bold text-emerald-400 mt-0.5">Laparoscopic Pyeloplasty + DJ Stent</div>
+            </div>
+          </div>
+
+          <div class="text-sm text-slate-300 leading-relaxed space-y-3 font-light">
+            <p>
+              Following personal diagnostic investigation regarding lymphadenopathy versus congenital hydronephrosis, imaging confirmed an aperistaltic stenosis at the right ureteropelvic junction. The clinical objective was dismembered surgical reconstruction to restore unobstructed laminar urinary flow.
+            </p>
+            <div class="p-4 rounded-xl bg-slate-950/70 border-l-2 border-emerald-400 text-xs font-mono text-slate-300 space-y-1.5">
+              <div class="text-emerald-400 font-bold">Key Surgical Mechanics (Anderson-Hynes):</div>
+              <div>1. Mobilization of right colon &amp; exposure of dilated renal pelvis.</div>
+              <div>2. Excision of the narrow aperistaltic ureteral junction.</div>
+              <div>3. Lateral spatulation of the healthy ureter (1.5–2.0 cm).</div>
+              <div>4. Watertight, tension-free anastomosis with 4-0/5-0 Vicryl over a double-J stent.</div>
+            </div>
+          </div>
+
+          <button onclick="openModal('medical', 'puj_full')" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold transition">
+            <i data-lucide="book-open" class="w-4 h-4"></i> Read Full 12-Point Surgical Notebook
+          </button>
+        </div>
+
+        <!-- Right 5 cols: Interactive Active Recall / Flashcard Engine -->
+        <div class="lg:col-span-5 glass-card rounded-2xl p-6 flex flex-col justify-between search-target" data-keywords="anki active recall spaced repetition study high yield exam questions">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-accent-amber animate-pulse"></span>
+                <span class="text-xs font-mono font-bold text-accent-amber uppercase">Active Recall Studio</span>
+              </div>
+              <span class="text-[11px] font-mono text-slate-400" id="cardCounter">Card 1 of 4</span>
+            </div>
+
+            <h4 class="text-sm font-semibold text-slate-200">High-Yield Medical &amp; Biology Revision Deck</h4>
+
+            <!-- Flashcard Frame -->
+            <div id="flashcardBox" class="min-h-[190px] rounded-xl bg-slate-950/90 border border-slate-800 p-5 flex flex-col justify-between transition-all">
+              <div>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 uppercase" id="cardTopic">Renal Pathology</span>
+                <div class="text-sm font-medium text-white mt-3" id="cardQuestion">
+                  What is the gold standard diagnostic scan to quantify split renal function and confirm PUJ obstruction excretion delay?
+                </div>
+              </div>
+
+              <!-- Answer (Hidden by default) -->
+              <div id="cardAnswer" class="hidden mt-3 pt-3 border-t border-slate-800 text-xs text-emerald-400 font-mono">
+                <strong>Answer:</strong> 99mTc-MAG3 / DTPA Renogram with Furosemide (Lasix) challenge ($T_{1/2} > 20\text{ min}$ indicates definitive obstruction).
+              </div>
+            </div>
+          </div>
+
+          <!-- Flashcard Controls -->
+          <div class="space-y-2 mt-4 pt-3 border-t border-slate-800/80">
+            <div class="flex gap-2">
+              <button onclick="toggleCardAnswer()" id="revealBtn" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition">
+                Reveal Answer
+              </button>
+              <button onclick="nextCard()" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition">
+                Next Card <i data-lucide="chevron-right" class="w-3.5 h-3.5 inline"></i>
+              </button>
+            </div>
+            <p class="text-[10px] text-center text-slate-500 font-mono">Configured for spaced-repetition retention on Redmi Pad 2</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PILLAR 4: PRESIDENT'S SCOUT DOSSIER & FIELDCRAFT -->
+    <section id="scout" class="pillar-section space-y-8" data-category="scout">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <div class="text-xs font-mono font-bold text-accent-amber uppercase tracking-widest flex items-center gap-2">
+            <i data-lucide="compass" class="w-4 h-4"></i> Pillar 04
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">President’s Scout Dossier &amp; Pioneering</h2>
+          <p class="text-slate-400 text-sm mt-1 max-w-xl">
+            2020 President's Scout Award recipient, Senior Patrol Leader (SPL) track, fieldcraft engineering blueprints, and mentorship pipeline.
+          </p>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-xs text-amber-400">
+          <span class="px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/20">10–12 Mentored to PS Award</span>
+        </div>
+      </div>
+
+      <!-- Scout Dossier Timeline & Badges -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        
+        <!-- Track 1: Award Milestone -->
+        <div class="glass-card rounded-2xl p-5 space-y-4 search-target" data-keywords="scout president award 2020 spl leadership examination tests">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center">
+            <i data-lucide="award" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-amber-400 font-semibold">2020 National Honor</div>
+            <h3 class="text-base font-bold text-white mt-0.5">President's Scout Award</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Achieved following multi-tier upazila, district, and national evaluation camps testing pioneering mechanics, emergency first-aid triage, cartography, and survival endurance.
+          </p>
+          <ul class="text-xs font-mono text-slate-400 space-y-1 pt-1 border-t border-slate-800">
+            <li>• Enrolled: 2019</li>
+            <li>• Patrol Leader (PL): 2 Years</li>
+            <li>• Senior Patrol Leader (SPL): 2 Years</li>
+          </ul>
+        </div>
+
+        <!-- Track 2: Mentorship Record -->
+        <div class="glass-card rounded-2xl p-5 space-y-4 search-target" data-keywords="scout mentorship junior training troop leadership exams">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center">
+            <i data-lucide="users" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-emerald-400 font-semibold">Troop Leadership Track</div>
+            <h3 class="text-base font-bold text-white mt-0.5">Mentoring the Next Vanguard</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Designed structured preparatory training curricula for 10–12 junior scouts, facilitating ropework mastery, morse code, and discipline drills to secure national awards.
+          </p>
+          <ul class="text-xs font-mono text-slate-400 space-y-1 pt-1 border-t border-slate-800">
+            <li>• 100% Qualifying Rate for Mentored Cadre</li>
+            <li>• Troop Honor Badge achieved individually</li>
+            <li>• Campfire Master of Ceremonies &amp; Logistics</li>
+          </ul>
+        </div>
+
+        <!-- Track 3: Fieldcraft Engineering & Pioneering -->
+        <div class="glass-card rounded-2xl p-5 space-y-4 search-target" data-keywords="scout fieldcraft knots lashing pioneering bridge tower friction campcraft">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center">
+            <i data-lucide="wrench" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="text-xs font-mono text-cyan-400 font-semibold">Pioneering Physics</div>
+            <h3 class="text-base font-bold text-white mt-0.5">Timber Friction &amp; Lashings</h3>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Engineering temporary suspension bridges, four-legged observation towers, and signal masts using natural manila rope and timber friction mechanics.
+          </p>
+          <div class="pt-1">
+            <button onclick="openModal('scout', 'lashings')" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-cyan-300 flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="file-code" class="w-3.5 h-3.5"></i> View Fieldcraft Schematics
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PILLAR 5: HERITAGE & CULINARY FLAVOR LAB -->
+    <section id="heritage" class="pillar-section space-y-8" data-category="heritage">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <div class="text-xs font-mono font-bold text-accent-rose uppercase tracking-widest flex items-center gap-2">
+            <i data-lucide="book-marked" class="w-4 h-4"></i> Pillar 05
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Heritage Journal &amp; Culinary Flavor Lab</h2>
+          <p class="text-slate-400 text-sm mt-1 max-w-xl">
+            A memorial to the intellectual lineage of Imam Abdus Sattar, paired with precision culinary science recipes and aromatic extraction ratios.
+          </p>
+        </div>
+        <div class="text-xs font-mono text-slate-400">
+          Rooted in integrity, scholarship &amp; herbal Hakim wisdom.
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left: Father's Memorial & Scholarly Tribute (7 Cols) -->
+        <div class="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8 space-y-5 border-l-4 border-amber-500/80 search-target" data-keywords="father imam abdus sattar khatib scholar hakim madrasha unani heritage wisdom">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold flex items-center gap-1.5">
+              <i data-lucide="feather" class="w-4 h-4"></i> In Memoriam &amp; Lineage
+            </span>
+            <span class="text-xs font-mono text-slate-400">1940s – 1 Jan 2026</span>
+          </div>
+
+          <div>
+            <h3 class="text-xl sm:text-2xl font-serif font-bold text-white tracking-wide">
+              The Scholar, Khatib &amp; Hakim: Imam Abdus Sattar
+            </h3>
+            <p class="text-xs font-mono text-slate-400 mt-1">
+              37 Years of Jummah Khatib Service • Madrasha Educator • Herbal Unani Hakim
+            </p>
+          </div>
+
+          <blockquote class="italic text-sm text-slate-300 border-l-2 border-slate-700 pl-4 py-1 leading-relaxed font-serif">
+            "True scholarship is not measured in the volume of words, but in the rectitude of action, the healing of bodies, and the quiet upliftment of souls."
+          </blockquote>
+
+          <div class="text-xs text-slate-300 leading-relaxed space-y-2.5 font-light">
+            <p>
+              My late father, <strong class="text-white font-medium">Imam Abdus Sattar</strong>, was the bedrock of our family’s educational tradition. For nearly four decades, he delivered sermons of moral clarity, mentored generations in classical Arabic and Islamic jurisprudence, and practiced traditional medicine (Hakimi / Tibb) to serve those without access to primary care.
+            </p>
+            <p>
+              His devotion to learning fostered a family where my eldest sister became a BCS Gynecologist, my sister serves as Union Parishad Secretary, and my siblings completed university degrees in Chittagong. His memory remains my standard for integrity and empathy in medicine.
+            </p>
+          </div>
+
+          <div class="pt-2 flex flex-wrap items-center gap-2 text-xs font-mono text-slate-400">
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Spiritual Guidance</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Herbal Pharmacopeia</span>
+            <span class="px-2.5 py-1 rounded bg-slate-900 border border-slate-800">Moral Philosophy</span>
+          </div>
+        </div>
+
+        <!-- Right: Culinary Flavor Lab Cards (5 Cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          
+          <!-- Recipe Card 1 -->
+          <div class="glass-card rounded-2xl p-5 space-y-3 search-target" data-keywords="culinary recipe spice biryani aromatics cardamom clove dum cooking">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-accent-rose font-semibold">Extraction Matrix</span>
+              <span class="text-slate-400">Slow Dum • 120 min</span>
+            </div>
+            <h4 class="text-base font-bold text-white">Chittagong Heritage Spice &amp; Saffron Infusion</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Calculated mace-to-cardamom ratios, high-temp whole ghee bloom, and layered parboiled aromatic rice steamed over charcoal embers.
+            </p>
+            <button onclick="openModal('culinary', 'biryani_formula')" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-rose-300 flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="utensils" class="w-3.5 h-3.5"></i> View Flavor Lab Recipe &amp; Ratios
+            </button>
+          </div>
+
+          <!-- Recipe Card 2 -->
+          <div class="glass-card rounded-2xl p-5 space-y-3 search-target" data-keywords="tea chai ginger cardamom cloves decoction herbal infusion hakim">
+            <div class="flex items-center justify-between text-xs font-mono">
+              <span class="text-accent-amber font-semibold">Herbal Decoction</span>
+              <span class="text-slate-400">Simmer • 15 min</span>
+            </div>
+            <h4 class="text-base font-bold text-white">Hakim's Restorative Ginger-Cinnamon Kadha</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Traditional bioactive infusion of crushed dry ginger root, Ceylon cinnamon, black peppercorns, and raw raw honeycomb for respiratory vitality.
+            </p>
+            <button onclick="openModal('culinary', 'herbal_infusion')" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-amber-300 flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="coffee" class="w-3.5 h-3.5"></i> View Herbal Preparation Guide
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CONTACT & SCOUT MENTORSHIP INQUIRY FORM -->
+    <section id="contact" class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-800 relative overflow-hidden">
+      
+      <div class="max-w-3xl mx-auto text-center space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+          <i data-lucide="mail" class="w-3.5 h-3.5"></i> Open for Collaborations &amp; Mentorship
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-bold text-white">Initiate a Dialogue or Mentorship Session</h2>
+        <p class="text-slate-400 text-xs sm:text-sm">
+          Whether you need consultation on President’s Scout preparation, surgical study notes, or video editing &amp; color grading direction.
+        </p>
+      </div>
+
+      <form id="contactForm" onsubmit="handleFormSubmit(event)" class="max-w-2xl mx-auto mt-8 space-y-4">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-1">Your Name</label>
+            <input 
+              type="text" 
+              required 
+              id="senderName"
+              placeholder="e.g. Tanvir Ahmed" 
+              class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-1">Your Email</label>
+            <input 
+              type="email" 
+              required 
+              id="senderEmail"
+              placeholder="name@organization.com" 
+              class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-1">Inquiry Purpose</label>
+            <select 
+              id="inquiryType"
+              class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-sm focus:outline-none focus:border-emerald-500"
+            >
+              <option value="Scout Mentorship">President's Scout Mentorship &amp; Tests</option>
+              <option value="Video Color Grading">Cinema / Video Editing &amp; Color Grade</option>
+              <option value="Medical Study Exchange">Medical Study &amp; Case Collaboration</option>
+              <option value="General Collaboration">General Collaborative Project</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-1">Preferred Platform</label>
+            <select 
+              id="platformPref"
+              class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-sm focus:outline-none focus:border-emerald-500"
+            >
+              <option value="Email">Email Communication</option>
+              <option value="WhatsApp">WhatsApp / Telegram</option>
+              <option value="Google Meet">Virtual Video Session</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Message / Objectives</label>
+          <textarea 
+            rows="4" 
+            required 
+            id="senderMsg"
+            placeholder="Outline your troop goals, video footage scope, or clinical query..." 
+            class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+          ></textarea>
+        </div>
+
+        <button 
+          type="submit" 
+          id="submitBtn"
+          class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 transition"
+        >
+          <i data-lucide="send" class="w-4 h-4"></i>
+          <span>Transmit Message</span>
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 bg-slate-950/80 mt-20 py-10 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="text-emerald-400 font-bold">ASM ADIL</span>
+        <span>•</span>
+        <span>Portfolio &amp; Clinical Archive</span>
+      </div>
+      <div>
+        Dedicated to the enduring memory of Imam Abdus Sattar (Rahimahullah)
+      </div>
+      <div class="text-slate-500">
+        Typeset &amp; Engineered with Precision
+      </div>
+    </div>
+  </footer>
+
+  <!-- DYNAMIC MODAL / LIGHTBOX CONTAINER -->
+  <div id="modalBackdrop" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div id="modalBox" class="relative w-full max-w-2xl bg-slate-900 border border-slate-700/80 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+      
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 p-2 rounded-lg bg-slate-800 text-slate-400 hover:text-white transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Modal Content Target -->
+      <div id="modalBody"></div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER (No alert() used) -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-xl bg-slate-900 border border-emerald-500/50 shadow-2xl flex items-center gap-3 text-xs font-mono text-slate-100 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+      <i data-lucide="check" class="w-3.5 h-3.5"></i>
+    </div>
+    <span id="toastMsg">Inquiry sent successfully!</span>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // Handle Manual Photo Upload / Direct File Picker for 19376.jpg
+    function handleManualPhotoUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const objectUrl = URL.createObjectURL(file);
+        document.querySelectorAll('.user-personal-photo').forEach(img => {
+          img.src = objectUrl;
+        });
+        showToast("Your photo (19376.jpg) has been loaded successfully!");
+      }
+    }
+
+    // Color Grade Comparison Slider
+    function updateGradeSlider(val) {
+      const overlay = document.getElementById('gradeOverlay');
+      overlay.style.width = val + '%';
+    }
+
+    let isWiping = false;
+    let wipeInterval;
+    function toggleGradeSlider() {
+      const slider = document.getElementById('gradeRange');
+      if (isWiping) {
+        clearInterval(wipeInterval);
+        isWiping = false;
+        return;
+      }
+      isWiping = true;
+      let dir = 1;
+      wipeInterval = setInterval(() => {
+        let cur = parseInt(slider.value, 10);
+        if (cur >= 95) dir = -1;
+        if (cur <= 5) dir = 1;
+        slider.value = cur + (dir * 2);
+        updateGradeSlider(slider.value);
+      }, 30);
+    }
+
+    // Category Filter Function
+    function filterContent(category) {
+      const pills = document.querySelectorAll('.filter-btn');
+      pills.forEach(p => {
+        p.classList.remove('bg-emerald-500', 'text-slate-950');
+        p.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      event.target.classList.remove('bg-slate-800', 'text-slate-300');
+      event.target.classList.add('bg-emerald-500', 'text-slate-950');
+
+      const sections = document.querySelectorAll('.pillar-section');
+      sections.forEach(sec => {
+        if (category === 'all' || sec.dataset.category === category) {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+    }
+
+    // Live Search Filter Across Targets
+    function handleSearch() {
+      const query = document.getElementById('liveSearchInput').value.toLowerCase().trim();
+      const targets = document.querySelectorAll('.search-target');
+
+      targets.forEach(el => {
+        const text = el.innerText.toLowerCase();
+        const kw = el.getAttribute('data-keywords') || '';
+        if (query === '' || text.includes(query) || kw.includes(query)) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    }
+
+    // Active Recall / Flashcard Studio Data & Logic
+    const flashcards = [
+      {
+        topic: "Renal Diagnostics",
+        q: "What is the gold standard diagnostic scan to quantify split renal function and confirm PUJ obstruction excretion delay?",
+        a: "99mTc-MAG3 or DTPA Renogram with Furosemide (Lasix) washout. A clearance half-time (T½) > 20 minutes confirms definite mechanical obstruction."
+      },
+      {
+        topic: "Surgical Technique",
+        q: "In the Anderson-Hynes dismembered pyeloplasty, what is the critical purpose of ureteric spatulation?",
+        a: "Spatulation extends the lateral edge (1.5-2.0 cm) to create a wide, funnel-shaped anastomotic aperture, preventing secondary stricture formation and turbulent flow."
+      },
+      {
+        topic: "Pioneering Physics",
+        q: "Why is a Diagonal Lashing specifically chosen over a Square Lashing in pioneering structures?",
+        a: "Diagonal Lashing is engineered for spars that cross at angles other than 90° and prevents cross-member racking under rotational or spring strain."
+      },
+      {
+        topic: "Color Science",
+        q: "What is the primary difference between a LUT and a Color Space Transform (CST) in DaVinci Resolve?",
+        a: "A CST mathematically remaps camera gamut and gamma curves (e.g. S-Log3 to Rec.709) without clipping highlights, whereas a 3D LUT is a static interpolated look-up cube that can clip or introduce banding if input data exceeds bounds."
+      }
+    ];
+
+    let currentCardIndex = 0;
+    function showCard(idx) {
+      const card = flashcards[idx];
+      document.getElementById('cardTopic').innerText = card.topic;
+      document.getElementById('cardQuestion').innerText = card.q;
+      document.getElementById('cardAnswer').innerHTML = `<strong>Answer:</strong> ${card.a}`;
+      document.getElementById('cardAnswer').classList.add('hidden');
+      document.getElementById('revealBtn').innerText = "Reveal Answer";
+      document.getElementById('cardCounter').innerText = `Card ${idx + 1} of ${flashcards.length}`;
+    }
+
+    function toggleCardAnswer() {
+      const ans = document.getElementById('cardAnswer');
+      const btn = document.getElementById('revealBtn');
+      if (ans.classList.contains('hidden')) {
+        ans.classList.remove('hidden');
+        btn.innerText = "Hide Answer";
+      } else {
+        ans.classList.add('hidden');
+        btn.innerText = "Reveal Answer";
+      }
+    }
+
+    function nextCard() {
+      currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+      showCard(currentCardIndex);
+    }
+
+    // Modal & Lightbox Logic
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalBody = document.getElementById('modalBody');
+
+    const modalData = {
+      cinema: {
+        estuary: {
+          title: "Estuary Tides & Mangrove Solitude — Technical Case",
+          sub: "Shot in Coastal Sundarbans • 4K Sony FX3 / A7IV Rig • 10-bit 4:2:2",
+          body: `
+            <div class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+              <p>
+                <strong>Directional Philosophy:</strong> Designed to contrast the slow rhythmic movement of mangrove estuaries with atmospheric ambient drone frequencies. The grade was pushed with a custom soft-toe roll-off in the highlights to preserve the late-evening sun along the tidal horizon.
+              </p>
+              <div class="p-3 bg-slate-950 rounded-xl font-mono text-xs border border-slate-800 text-emerald-400">
+                • Frame Rate: 4K UHD @ 59.94 fps<br/>
+                • Shutter: 1/120s (180-degree rule)<br/>
+                • Color Temp: 5400K with +4 Green bias for chlorophyll richness<br/>
+                • Delivery: DCI Flat 1.85:1 aspect ratio
+              </div>
+            </div>
+          `
+        },
+        scout_rally: {
+          title: "National Scout Jamboree Trailer — Speed Ramping",
+          sub: "Motion Graphics & Kinetic Typography • After Effects & Premiere Pro",
+          body: `
+            <div class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+              <p>
+                Edited to dynamic acoustic drum transients. Visual elements incorporated high-contrast frame rates, compass HUD graphics, and rope lashing motion tracking overlays.
+              </p>
+            </div>
+          `
+        },
+        medical_motion: {
+          title: "Anderson-Hynes Laparoscopic Anastomosis 3D Simulation",
+          sub: "Blender 3D + After Effects Compositing",
+          body: `
+            <div class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+              <p>
+                Detailed motion visualization designed to explain the 4-quadrant continuous suture pattern of the renal pelvis to junior medical peers. Included cross-sectional flow dynamics before and after dismemberment.
+              </p>
+            </div>
+          `
+        }
+      },
+      medical: {
+        puj_full: {
+          title: "12-Point Clinical Review: Right PUJ Obstruction",
+          sub: "Pathology, Diagnostics & Laparoscopic Reconstruction",
+          body: `
+            <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+              <div class="font-mono text-xs text-emerald-400 uppercase font-semibold">Diagnostic Workup</div>
+              <p>1. <strong>Ultrasonography:</strong> Showed right-sided moderate pelvicalyceal dilation without lower ureteric dilatation.</p>
+              <p>2. <strong>Renogram:</strong> DTPA scan confirmed significant excretion delay ($T_{1/2} > 25\\text{ min}$), indicating extrinsic/intrinsic obstruction at the ureteropelvic transition.</p>
+              <div class="font-mono text-xs text-cyan-400 uppercase font-semibold pt-2">Laparoscopic Pyeloplasty Step Protocol</div>
+              <p>3. <strong>Port Placement:</strong> 3-port transperitoneal approach (10mm umbilical optical, two 5mm working ports in right hypochondrium & iliac fossa).</p>
+              <p>4. <strong>Renal Pelvis Trimming:</strong> Redundant pelvis tissue excised to reduce dead space and stagnation.</p>
+              <p>5. <strong>Internal Stenting:</strong> Double-J stent (4.8 Fr, 26cm) positioned retrograde/antegrade to protect the anastomosis during initial epithelial healing (removed post 6 weeks).</p>
+            </div>
+          `
+        }
+      },
+      scout: {
+        lashings: {
+          title: "Pioneering Engineering & Friction Mechanics",
+          sub: "Timber Tower Construction & Rigging Principles",
+          body: `
+            <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+              <p>
+                Pioneering relies on three primary friction joints:
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+                <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                  <div class="text-amber-400 font-bold">Square Lashing</div>
+                  <div class="text-slate-400">Maintains 90° load-bearing joints between perpendicular uprights and ledgers. Frapping turns provide core mechanical tension.</div>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                  <div class="text-amber-400 font-bold">Shear Lashing</div>
+                  <div class="text-slate-400">Used for creating A-frames and shear legs that support suspension footbridges over water gaps.</div>
+                </div>
+              </div>
+            </div>
+          `
+        }
+      },
+      culinary: {
+        biryani_formula: {
+          title: "Flavor Lab: Chittagong Saffron & Aromatic Dum",
+          sub: "Precision Spice Extraction & Thermal Equilibrium",
+          body: `
+            <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+              <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 font-mono text-xs text-rose-300">
+                • Green Cardamom (Crushed): 6g<br/>
+                • Mace Blades (Javitri): 2g<br/>
+                • Star Anise: 1 whole seed pod<br/>
+                • Pure Ghee Bloom Temp: 160°C (30 seconds flash extraction)<br/>
+                • Steaming: 45 min on low heat with sealed wheat dough collar
+              </div>
+            </div>
+          `
+        },
+        herbal_infusion: {
+          title: "Hakim Abdus Sattar's Restorative Decoction",
+          sub: "Unani Herbal Wisdom for Respiratory & Metabolic Balance",
+          body: `
+            <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+              <p>
+                Transmitted through my father's herbal manuscript:
+              </p>
+              <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 font-mono text-xs text-amber-300">
+                1. 20g fresh crushed ginger root boiled in 500ml water until reduced to 250ml.<br/>
+                2. 1 stick true Ceylon Cinnamon + 4 black peppercorns infused in the reduction.<br/>
+                3. Finished with raw wild honey (added only after cooling to &lt;45°C to preserve bioactive enzymes).
+              </div>
+            </div>
+          `
+        }
+      }
+    };
+
+    function openModal(category, id) {
+      const data = modalData[category]?.[id];
+      if (!data) return;
+
+      modalBody.innerHTML = `
+        <div class="space-y-3">
+          <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider">${data.sub}</div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white">${data.title}</h3>
+          <div class="pt-2 border-t border-slate-800">${data.body}</div>
+        </div>
+      `;
+      modalBackdrop.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+
+    function openPhotoModal(title, caption, imgUrl, fl, ap, ss, iso) {
+      // If the modal is opening for your photo, grab current rendered source
+      let activeSrc = imgUrl;
+      if (imgUrl === '19376.jpg') {
+        const hero = document.getElementById('heroAvatarImg');
+        if (hero && hero.src) activeSrc = hero.src;
+      }
+
+      modalBody.innerHTML = `
+        <div class="space-y-4">
+          <div class="rounded-xl overflow-hidden bg-slate-950 border border-slate-800 max-h-[60vh] flex items-center justify-center">
+            <img src="${activeSrc}" alt="${title}" class="max-h-[55vh] w-auto object-contain" />
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">${title}</h3>
+            <p class="text-xs text-slate-400 mt-1">${caption}</p>
+          </div>
+          <div class="grid grid-cols-4 gap-2 text-center text-xs font-mono p-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-300">
+            <div><span class="block text-slate-500 text-[10px]">FOCAL</span>${fl}</div>
+            <div><span class="block text-slate-500 text-[10px]">APERTURE</span>${ap}</div>
+            <div><span class="block text-slate-500 text-[10px]">SHUTTER</span>${ss}</div>
+            <div><span class="block text-slate-500 text-[10px]">ISO</span>${iso}</div>
+          </div>
+        </div>
+      `;
+      modalBackdrop.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      modalBackdrop.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Custom Toast Notification
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 4000);
+    }
+
+    // Contact Form Handler
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value;
+      const type = document.getElementById('inquiryType').value;
+      
+      showToast(`Thank you, ${name}! Your inquiry regarding ${type} has been dispatched.`);
+      document.getElementById('contactForm').reset();
+    }
+  </script>
+</body>
+</html>
